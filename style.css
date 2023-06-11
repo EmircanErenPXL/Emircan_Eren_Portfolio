@@ -1,6 +1,7 @@
 /* --------------- Fonts used : Poppins + Abril Fatface --------------- */
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
+
 /* --------------- Website Theme --------------- */
 
 :root{
@@ -1083,6 +1084,9 @@ textarea.form-input{
     transform: translate(0, -50%);
 }
 
+.subscription span{
+    color: #fff;
+}
 /* --------------- Footer Styling --------------- */
 
 footer{
@@ -1596,6 +1600,9 @@ footer .social-media{
         flex-basis: 100%;
         text-align: center;
         margin-top: 1rem;
+    }
+    .subscription span{
+        padding-left: 22%;
     }
 }
 

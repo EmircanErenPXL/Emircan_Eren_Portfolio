@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emircan Portfolio Website</title>
+  <title>Emircan | Portfolio</title>
 
   <!-- --------- Scroll Reveal Library --------- -->
   <script src="https://unpkg.com/scrollreveal"></script>
@@ -15,6 +15,9 @@
 
   <!-- --------- CSS Files --------- -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- --------- Icon Website --------- -->
+  <link rel="icon" type="image/x-icon" href="assets/logo-e2.png">
 
 </head>
 
@@ -605,7 +608,6 @@
           comments<br>or just want to say hello? Then don't hesitate to fill in the form.
           We strive to respond<br>as quickly as possible and provide you with the best service.
         </p>
-        <a href="mailto:emircan.eren75@gmail.com" class="mail">emircan.eren75@gmail.com <i class="uil uil-arrow-right"></i></a>
       </div>
 
       <form action="mailto:emircan.eren75@gmail.com" method="POST" class="contact-form">
@@ -631,10 +633,11 @@
             and inspiration? Then sign up for our newsletter!
           </p>
         </div>
-        <form action="subscripeto:emircan.eren75@gmail.com">
-          <input type="email" placeholder="Email" class="form-input" required>
-          <input type="submit" value="Subscribe" class="btn">
+        <form name="submit-to-google-sheet">
+          <input type="email" name="Email" placeholder="Your email" class="form-input" required>
+          <button type="submit" value="Subscribe" class="btn">Send</button>
         </form>
+        <span id="msg"></span>
       </div>
     </div>
   </section>
@@ -668,6 +671,25 @@
 
 <script src="../js/script.js"></script>
 <script src="../js/mixitup.min.js"></script>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwIhVUTc_RTrouzlYugqkBBTAUSce6zn13w2nfpNftPEre5zODk7mv4WKWspWS7c36fSA/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+              msg.innerHTML = "Thank You For Subscribing!"
+              setTimeout(function (){
+                msg.innerHTML = ""
+              },5000)
+              form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+  })
+</script>
 
 </body>
 </html>
